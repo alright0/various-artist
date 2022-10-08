@@ -1,0 +1,10 @@
+[tool.poetry]
+name = "various artist"
+version = "0.1.0"
+description = ""
+authors = ["Aleksey Korolev <laright0@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+ipython = "^8.5.0"
+Django = "^4.1.2"

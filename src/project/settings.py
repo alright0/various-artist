@@ -75,6 +75,10 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "project.wsgi.application"
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://various-artist.ru',
+]
+
 #DATABASES = {"default": env.db()}
 DATABASES = {
     "default": {

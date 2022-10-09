@@ -5,18 +5,17 @@ env = environ.Env(
     DATABASE_URL=str,
     SECRET_KEY=str,
     DEBUG=(str, False),
-
 )
 
 environ.Env.read_env()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-STATIC_ROOT = BASE_DIR.parent / 'static'
-MEDIA_ROOT = BASE_DIR.parent / 'media'
+STATIC_ROOT = BASE_DIR.parent / "static"
+MEDIA_ROOT = BASE_DIR.parent / "media"
 
 SECRET_KEY = env("SECRET_KEY")
 
-DEBUG = env('DEBUG')
+DEBUG = env("DEBUG")
 
 ALLOWED_HOSTS = [
     "www.various-artist.ru",
@@ -34,15 +33,13 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-
     # 3rd party apps
     "rest_framework",
     "rest_framework.authtoken",
-    'drf_yasg',
+    "drf_yasg",
     "rangefilter",
-
     # local apps
-    "echo"
+    "echo",
 ]
 
 MIDDLEWARE = [
@@ -76,10 +73,10 @@ TEMPLATES = [
 WSGI_APPLICATION = "project.wsgi.application"
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://various-artist.ru',
+    "https://various-artist.ru",
 ]
 
-#DATABASES = {"default": env.db()}
+# DATABASES = {"default": env.db()}
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
@@ -113,11 +110,11 @@ MEDIA_URL = "media/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated',
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.IsAuthenticated",
     ],
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-            'rest_framework.authentication.BasicAuthentication',
-            'rest_framework.authentication.TokenAuthentication',
-        ]
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.BasicAuthentication",
+        "rest_framework.authentication.TokenAuthentication",
+    ],
 }

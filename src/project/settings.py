@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     "rangefilter",
 
     # local apps
-
+    "echo"
 ]
 
 MIDDLEWARE = [

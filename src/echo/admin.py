@@ -9,5 +9,6 @@ class EchoAdmin(admin.ModelAdmin):
 
     @admin.display(description='data', )
     def get_data(self, obj):
+        data = str(obj.data)
         cut = 30
-        return obj.data if len(str(obj.data)) < cut else obj.data[:cut]
+        return data if len(data) < cut else f'{data[:cut]}...'

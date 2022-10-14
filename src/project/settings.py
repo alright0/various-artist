@@ -10,7 +10,7 @@ env = environ.Env(
 environ.Env.read_env()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-STATIC_ROOT = BASE_DIR.parent / "static"
+STATIC_ROOT = BASE_DIR.parent / "static_back"
 MEDIA_ROOT = BASE_DIR.parent / "media"
 
 SECRET_KEY = env("SECRET_KEY")

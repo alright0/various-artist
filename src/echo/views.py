@@ -1,5 +1,4 @@
-from rest_framework import status
-from rest_framework.authentication import TokenAuthentication, BasicAuthentication
+from rest_framework import authentication, status
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
@@ -10,7 +9,10 @@ from echo.serializers import EchoSerializer
 
 class EchoView(ModelViewSet):
     queryset = Echo.objects.all().order_by("-created")
-    authentication_classes = [TokenAuthentication, BasicAuthentication]
+    authentication_classes = [
+        authentication.TokenAuthentication,
+        authentication.BasicAuthentication,
+    ]
     permission_classes = [AllowAny]
     serializer_class = EchoSerializer
 
@@ -20,3 +22,11 @@ class EchoView(ModelViewSet):
 
         Echo.objects.create(data=request.data, user=request.user)
         return Response(request.data, status=status.HTTP_201_CREATED)
+
+    def destroy(self, request, pk=None):
+        Echo.objects.delete(pk=pk)
+
+        return Response(
+            {f"message: message id={pk} deleted!"},
+            status=status.HTTP_200_OK,
+        )

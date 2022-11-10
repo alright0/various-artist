@@ -1,5 +1,6 @@
-from rangefilter.filters import DateRangeFilter
 from django.contrib import admin
+from rangefilter.filters import DateRangeFilter
+
 from echo.models import Echo
 
 

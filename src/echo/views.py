@@ -10,7 +10,7 @@ from echo.serializers import EchoSerializer
 
 class EchoView(ModelViewSet):
     queryset = Echo.objects.all().order_by("-created")
-    authentication_classes = BasicAuthentication
+    authentication_classes = (BasicAuthentication,)
     permission_classes = [AllowAny]
     serializer_class = EchoSerializer
 

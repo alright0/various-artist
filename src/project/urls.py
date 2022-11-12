@@ -18,6 +18,7 @@ urlpatterns = [
     re_path("^api/", include("echo.urls")),
     re_path("^api/auth/login/$", auth.TokenObtainPairView.as_view()),
     re_path("^api/auth/refresh/$", auth.TokenRefreshView.as_view()),
+    re_path("^api/auth/verify/$", auth.TokenVerifyView.as_view()),
     path("admin/", admin.site.urls),
     re_path(
         r"^swagger(?P<format>\.json|\.yaml)$",

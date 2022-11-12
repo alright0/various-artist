@@ -1,4 +1,4 @@
-from rest_framework import authentication, status
+from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
@@ -10,10 +10,7 @@ from echo.serializers import EchoSerializer
 
 class EchoView(ModelViewSet):
     queryset = Echo.objects.all().order_by("-created")
-    authentication_classes = (
-        authentication.TokenAuthentication,
-        JWTAuthentication,
-    )
+    authentication_classes = (JWTAuthentication,)
     permission_classes = [IsAuthenticated]
     serializer_class = EchoSerializer
 

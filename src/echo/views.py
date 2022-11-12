@@ -11,7 +11,6 @@ from echo.serializers import EchoSerializer
 class EchoView(ModelViewSet):
     queryset = Echo.objects.all().order_by("-created")
     authentication_classes = (
-        authentication.BasicAuthentication,
         authentication.TokenAuthentication,
         JWTAuthentication,
     )

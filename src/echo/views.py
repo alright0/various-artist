@@ -1,6 +1,6 @@
 from rest_framework import status
 from rest_framework.authentication import BasicAuthentication
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 
@@ -11,7 +11,7 @@ from echo.serializers import EchoSerializer
 class EchoView(ModelViewSet):
     queryset = Echo.objects.all().order_by("-created")
     authentication_classes = (BasicAuthentication,)
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated]  # AllowAny]
     serializer_class = EchoSerializer
 
     def post(self, request, *args, **kwargs):

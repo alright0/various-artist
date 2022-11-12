@@ -1,3 +1,4 @@
+import rest_framework_simplejwt.views as auth
 from django.contrib import admin
 from django.urls import include, path, re_path
 from drf_yasg import openapi
@@ -15,6 +16,8 @@ schema_view = get_schema_view(
 
 urlpatterns = [
     re_path("^api/", include("echo.urls")),
+    re_path("^auth/login/$", auth.TokenObtainPairView.as_view()),
+    re_path("^auth/refresh/$", auth.TokenRefreshView.as_view()),
     path("admin/", admin.site.urls),
     re_path(
         r"^swagger(?P<format>\.json|\.yaml)$",

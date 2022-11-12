@@ -2,6 +2,7 @@ from rest_framework import authentication, status
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
+from rest_framework_simplejwt.authentication import JWTAuthentication
 
 from echo.models import Echo
 from echo.serializers import EchoSerializer
@@ -12,6 +13,7 @@ class EchoView(ModelViewSet):
     authentication_classes = (
         authentication.BasicAuthentication,
         authentication.TokenAuthentication,
+        JWTAuthentication,
     )
     permission_classes = [IsAuthenticated]
     serializer_class = EchoSerializer

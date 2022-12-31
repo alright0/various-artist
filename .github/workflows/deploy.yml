@@ -1,0 +1,28 @@
+name: Deploy to vps server
+
+on:
+  push:
+    branches: [ "master" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to VDS
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.REMOTE_HOST }}
+          port: ${{ secrets.REMOTE_PORT }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          username: ${{ secrets.REMOTE_USER }}
+
+          script: |
+            cd /var/www/backend/various-artist
+            git fetch
+            git pull
+            git reset --hard origin/master
+            source ./venv/bin/activate
+            poetry install
+            python src/manage.py collectstatic --noinput
+            python src/manage.py migrate
+            supervisorctl restart va:
